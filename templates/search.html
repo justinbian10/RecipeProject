@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search</title>
+    <link href="{{ url_for('static', filename='stylesheets/nav.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='stylesheets/searchstyle.css') }}" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="navbar">
+          <a class="home_link" href="/"><li class="nav-item">Home</li></a>
+          <a class="add_link" href="add"><li class="nav-item">Add a Recipe</li></a>
+          <a class="search_link" href="search"><li class="current">Search for Recipe</li></a>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="main-section">
+        <h2 class="description">Search for a Recipe</h2>
+        <form class="search-settings" action="/" method="GET">
+          <div class="search-bar">
+            <input type="text" id="name-search" name="name-search" placeholder="Search for a recipe">
+            <button type="submit" class="search-button"></button>
+          </div>
+          <div class="choose-type">
+            <label># of Servings</label>
+            <ul class="form-checks">
+              <li><input type="checkbox" name="servings1" value="one">1</li>
+              <li><input type="checkbox" name="servings2" value="two">2</li>
+              <li><input type="checkbox" name="servings3" value="three">3</li>
+              <li><input type="checkbox" name="servings4" value="four">4</li>
+              <li><input type="checkbox" name="servings5" value="five">5</li>
+              <li><input type="checkbox" name="servings6+" value="six+">6+</li>
+            </ul>
+          </div>
+          <div class="choose-type food-type">
+            <label>Type of Food</label>
+            <ul class="form-checks">
+              <li><input type="checkbox" name="type-breakfast" value="breakfast">Breakfast</li>
+              <li><input type="checkbox" name="type-lunch" value="lunch">Lunch</li>
+              <li><input type="checkbox" name="type-dinner" value="dinner">Dinner</li>
+              <li><input type="checkbox" name="type-dessert" value="dessert">Dessert</li>
+              <li><input type="checkbox" name="type-snack" value="snack">Snack</li>
+              <li><input type="checkbox" name="type-other" value="other">Other</li>
+            </ul>
+          </div>
+          <div class="choose-type cook-time">
+            <label>Cook Time</label>
+            <ul class="form-checks">
+              <li><input type="checkbox" name="time-30min" value="30min">less than 30 mins</li>
+              <li><input type="checkbox" name="time-1hr" value="1hr">30 mins to 1 hour</li>
+              <li><input type="checkbox" name="time-2hr" value="2hr">1 hour to 2 hours</li>
+              <li><input type="checkbox" name="time-4hr" value="4hr">2 hours to 4hours</li>
+              <li><input type="checkbox" name="time-8hr" value="8hr">4 hours to 8 hours</li>
+              <li><input type="checkbox" name="time-24hr" value="24hr">8 hours to 24 hours</li>
+              <li><input type="checkbox" name="time-24+hr" value="24+hr">more than 24 hours</li>
+            </ul>
+          </div>
+        </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+input {
+  display: inline-block;
+}
+
+input[type=text] {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  padding: .5vw .5vw;
+  width: 60%;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.search-button {
+  position: absolute;
+  background: blue;
+  padding: 1.1vw 1.5vw;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.search-bar {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+}
+
+.main-section {
+  text-align: center;
+}
+
+.form-checks {
+  columns: 2;
+  padding: 0;
+}
+
+.form-checks li {
+  width: 95%;
+  float: left;
+  padding: 0;
+}
+
+.choose-type {
+  display: inline-block;
+  width: 10%;
+  text-align: center;
+}
+
+.food-type {
+  width: 15%;
+}
+
+.cook-time {
+  width: 30%;
+}
+
+label {
+
+}

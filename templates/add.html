@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add a Recipe</title>
+    <link href="{{ url_for('static', filename='stylesheets/nav.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='stylesheets/addstyle.css') }}" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="navbar">
+          <a class="home_link" href="/"><li class="nav-item">Home</li></a>
+          <a class="add_link" href="add"><li class="current">Add a Recipe</li></a>
+          <a class="search_link" href="search"><li class="nav-item">Search for Recipe</li></a>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <!--Title, Cook time, ingredients, instructions, meal origin/type of food (ex. Spanish), amount of servings-->
+      <div class="title-info">
+        <h2 class="description">Add a Recipe</h2>
+        <p class="help"><span class="req">*</span>Fields are required</p>
+      </div>
+      <form target="insert" enctype="multipart/form-data" method="POST">
+        <fieldset class="title-field">
+          <legend>Basic Info</legend>
+          <label for="recipe-name">Recipe Name<span class="req">*</span>:</label>
+          <input type="text" id="recipe-name" name="recipe-name" required>
+          <label for="servings"># of Servings:</label>
+          <input type="number" id="servings" name="servings" min=0>
+          <label for="food-type">Type of Food:</label>
+          <select id="food-type" name="food-type">
+            <option></option>
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="dessert">Dessert</option>
+            <option value="snack">Snack</option>
+            <option value="other">Other</option>
+          </select>
+        </fieldset>
+        <fieldset class="cook-time-field">
+          <legend>Cook Time</legend>
+          <label for="cook-days">Days:<label>
+          <input type="number" id="cook-days" name="cook-days" min=0>
+          <label for="cook-hours">Hours:<label>
+          <input type="number" id="cook-hours" name="cook-hours" min=0 max=23>
+          <label for="cook-mins">Minutes:<label>
+          <input type="number" id="cook-mins" name="cook-mins" min=0 max=59>
+        </fieldset>
+        <fieldset class="more-info">
+          <legend>Additional Cooking Info</legend>
+          <label for="ingredients">Ingredients<span class="req">*</span>:</label>
+          <textarea id="ingredients" name="ingredients" placeholder="Enter text here" required></textarea>
+          <label for="instructions">Instructions<span class="req">*</span>: </label>
+          <textarea rows="10" cols="40" id="instructions" name="instructions" placeholder="Enter text here" required></textarea>
+          <label for="pictures">Pictures of Food:</label>
+          <input type="file" id="pictures" name="pictures[]" accept="image/" multiple>
+        </fieldset>
+        <input type="submit" target="_self" value="Add Recipe">
+      </form>
+    </main>
+  </body>
+</html>

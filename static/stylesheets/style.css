@@ -1,0 +1,63 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  height: 100vh;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  grid-template: 10vh 6vh 6vh / 5vw 20vw 5vw;
+  grid-template-areas: "header header header"
+                       "item1 item1 item1"
+                       "item2 item2 item2";
+  grid-gap: 30px;
+  font-family: 'Manrope', sans-serif;
+}
+
+h2, h1 {
+  display: inline-grid;
+  margin: 0;
+  padding: 2%;
+  text-align: center;
+}
+
+h1 {
+  font-size: 40px;
+  grid-area: header;
+  padding: 3vw;
+  margin: 2vw;
+  cursor: default;
+
+}
+
+h2 {
+  color: black;
+  border-radius: 25px;
+  transition: .1s;
+  padding: 5%;
+  border: 2px solid black;
+  background-color: #EEE;
+  width: 90%;
+}
+
+a {
+  text-decoration: none;
+  width: 300px;
+  text-align: center;
+}
+
+h2:hover {
+  color: white;
+  background: maroon;
+
+  text-shadow:
+}
+
+.add_link {
+  grid-area: item1;
+}
+
+.search_link {
+  grid-area: item2;
+}
