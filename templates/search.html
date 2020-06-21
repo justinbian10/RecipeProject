@@ -6,6 +6,11 @@
     <link href="{{ url_for('static', filename='stylesheets/nav.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ url_for('static', filename='stylesheets/searchstyle.css') }}" type="text/css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+      .recipe-grid {
+        grid-template-rows: repeat({{ rows }}, 27vw);
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -20,7 +25,7 @@
     <main>
       <div class="main-section">
         <h2 class="description">Search for a Recipe</h2>
-        <form class="search-settings" action="/" method="GET">
+        <form class="search-settings" action="/search" method="GET">
           <div class="search-bar">
             <input type="text" id="name-search" name="name-search" placeholder="Search for a recipe">
             <button type="submit" class="search-button"></button>
@@ -28,39 +33,77 @@
           <div class="choose-type">
             <label># of Servings</label>
             <ul class="form-checks">
-              <li><input type="checkbox" name="servings1" value="one">1</li>
-              <li><input type="checkbox" name="servings2" value="two">2</li>
-              <li><input type="checkbox" name="servings3" value="three">3</li>
-              <li><input type="checkbox" name="servings4" value="four">4</li>
-              <li><input type="checkbox" name="servings5" value="five">5</li>
-              <li><input type="checkbox" name="servings6+" value="six+">6+</li>
+              <li><input type="checkbox" name="servings1" value="1">1</li>
+              <li><input type="checkbox" name="servings2" value="2">2</li>
+              <li><input type="checkbox" name="servings3" value="3">3</li>
+              <li><input type="checkbox" name="servings4" value="4">4</li>
+              <li><input type="checkbox" name="servings5" value="5">5</li>
+              <li><input type="checkbox" name="servings6+" value="6+">6+</li>
             </ul>
           </div>
           <div class="choose-type food-type">
             <label>Type of Food</label>
             <ul class="form-checks">
-              <li><input type="checkbox" name="type-breakfast" value="breakfast">Breakfast</li>
-              <li><input type="checkbox" name="type-lunch" value="lunch">Lunch</li>
-              <li><input type="checkbox" name="type-dinner" value="dinner">Dinner</li>
-              <li><input type="checkbox" name="type-dessert" value="dessert">Dessert</li>
-              <li><input type="checkbox" name="type-snack" value="snack">Snack</li>
-              <li><input type="checkbox" name="type-other" value="other">Other</li>
+              <li><input type="checkbox" name="type-breakfast" value="Breakfast">Breakfast</li>
+              <li><input type="checkbox" name="type-lunch" value="Lunch">Lunch</li>
+              <li><input type="checkbox" name="type-dinner" value="Dinner">Dinner</li>
+              <li><input type="checkbox" name="type-dessert" value="Dessert">Dessert</li>
+              <li><input type="checkbox" name="type-snack" value="Snack">Snack</li>
+              <li><input type="checkbox" name="type-other" value="Other">Other</li>
             </ul>
           </div>
           <div class="choose-type cook-time">
             <label>Cook Time</label>
             <ul class="form-checks">
-              <li><input type="checkbox" name="time-30min" value="30min">less than 30 mins</li>
-              <li><input type="checkbox" name="time-1hr" value="1hr">30 mins to 1 hour</li>
-              <li><input type="checkbox" name="time-2hr" value="2hr">1 hour to 2 hours</li>
-              <li><input type="checkbox" name="time-4hr" value="4hr">2 hours to 4hours</li>
-              <li><input type="checkbox" name="time-8hr" value="8hr">4 hours to 8 hours</li>
-              <li><input type="checkbox" name="time-24hr" value="24hr">8 hours to 24 hours</li>
-              <li><input type="checkbox" name="time-24+hr" value="24+hr">more than 24 hours</li>
+              <li><input type="checkbox" name="time-30min" value="0-.5">less than 30 mins</li>
+              <li><input type="checkbox" name="time-1hr" value=".5-1">30 mins to 1 hour</li>
+              <li><input type="checkbox" name="time-2hr" value="1-2">1 hour to 2 hours</li>
+              <li><input type="checkbox" name="time-4hr" value="2-4">2 hours to 4hours</li>
+              <li><input type="checkbox" name="time-8hr" value="4-8">4 hours to 8 hours</li>
+              <li><input type="checkbox" name="time-24hr" value="8-24">8 hours to 24 hours</li>
+              <li><input type="checkbox" name="time-24+hr" value="24">more than 24 hours</li>
             </ul>
           </div>
         </form>
+      </div>
+      <div class="recipe-grid">
+      {% for recipe in recipes %}
+        <div class="recipe-item">
+          <div class="details">
+            <h3><a href="">{{ recipe.recipe_name }}</a></h3>
+            <p class="detail-values"># of Servings: {{ recipe.servings }}</p>
+            <p class="detail-values">Type of Food: {{ recipe.food_type }}</p>
+            <p class="detail-values">
+              {% set days = '' %}
+              {% if recipe.cook_days and recipe.cook_days == 1 %}
+                {% set days = '1day' %}
+              {% elif recipe.cook_days and recipe.cook_days != 1 %}
+                {% set days = recipe.cook_days|string + 'days' %}
+              {% endif %}
+              {% set hours = '' %}
+              {% if recipe.cook_hours and recipe.cook_hours == 1 %}
+                {% set hours = '1hr' %}
+              {% elif recipe.cook_hours and recipe.cook_hours != 1 %}
+                {% set hours = recipe.cook_hours|string + 'hrs' %}
+              {% endif %}
+              {% set minutes = '' %}
+              {% if recipe.cook_minutes and recipe.cook_minutes == 1 %}
+                {% set minutes = '1minute' %}
+              {% elif recipe.cook_minutes and recipe.cook_minutes != 1 %}
+                {% set minutes = recipe.cook_minutes|string + 'minutes' %}
+              {% endif %}
+              Cook Time: {{ days }} {{ hours }} {{ minutes }}
+            </p>
+          </div>
+          {% if pictures %}
+            {% if pictures[loop.index0] and pictures.picture1 != '' %}
+              <img src="{{ url_for('uploads', filename=pictures[loop.index0].picture1) }}">
+            {% else %}
+              <h3 class="no-image">No Image</h3>
+            {% endif %}
+          {% endif %}
         </div>
+      {% endfor %}
       </div>
     </main>
   </body>

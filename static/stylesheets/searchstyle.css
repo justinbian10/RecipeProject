@@ -14,7 +14,8 @@ input[type=text] {
 .search-button {
   position: absolute;
   background: blue;
-  padding: 1.1vw 1.5vw;
+  height: 100%;
+  width: 3%;
   border: 2px solid black;
   border-radius: 5px;
 }
@@ -23,6 +24,7 @@ input[type=text] {
   display: block;
   margin: 0 auto;
   position: relative;
+  text-align: center;
 }
 
 .main-section {
@@ -47,13 +49,59 @@ input[type=text] {
 }
 
 .food-type {
-  width: 15%;
+  width: 20%;
 }
 
 .cook-time {
   width: 30%;
 }
 
-label {
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 22%);
+  grid-template-rows: repeat(10, 27vw);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  justify-content: center;
+  margin-top: 1%;
+}
 
+.recipe-item {
+  grid-column: auto;
+  border: 2px solid black;
+}
+
+.details {
+  height: 50%;
+}
+
+.detail-values {
+  margin: 1%;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+  width: 90%;
+  max-height: 45%;
+}
+
+h3 {
+  margin: 0 auto;
+  font-size: 24px;
+  border-bottom: 2px solid black;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.no-image {
+  border-bottom: None;
 }

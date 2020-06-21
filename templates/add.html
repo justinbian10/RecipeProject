@@ -32,29 +32,31 @@
           <label for="food-type">Type of Food:</label>
           <select id="food-type" name="food-type">
             <option></option>
-            <option value="breakfast">Breakfast</option>
-            <option value="lunch">Lunch</option>
-            <option value="dinner">Dinner</option>
-            <option value="dessert">Dessert</option>
-            <option value="snack">Snack</option>
-            <option value="other">Other</option>
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+            <option value="Dessert">Dessert</option>
+            <option value="Snack">Snack</option>
+            <option value="Other">Other</option>
           </select>
         </fieldset>
         <fieldset class="cook-time-field">
           <legend>Cook Time</legend>
-          <label for="cook-days">Days:<label>
-          <input type="number" id="cook-days" name="cook-days" min=0>
-          <label for="cook-hours">Hours:<label>
-          <input type="number" id="cook-hours" name="cook-hours" min=0 max=23>
-          <label for="cook-mins">Minutes:<label>
-          <input type="number" id="cook-mins" name="cook-mins" min=0 max=59>
+          <label for="cook-days">Days<span class="req">*</span>:<label>
+          <input type="number" id="cook-days" name="cook-days" value=0 min=0 required>
+          <label for="cook-hours">Hours<span class="req">*</span>:<label>
+          <input type="number" id="cook-hours" name="cook-hours" value=0 min=0 max=23 required>
+          <label for="cook-mins">Minutes<span class="req">*</span>:<label>
+          <input type="number" id="cook-mins" name="cook-mins" value=0 min=0 max=59 required>
         </fieldset>
         <fieldset class="more-info">
           <legend>Additional Cooking Info</legend>
+          <label for="description">Description:</label>
+          <textarea id="description" name="descriptions" placeholder="Enter text here"></textarea>
           <label for="ingredients">Ingredients<span class="req">*</span>:</label>
           <textarea id="ingredients" name="ingredients" placeholder="Enter text here" required></textarea>
           <label for="instructions">Instructions<span class="req">*</span>: </label>
-          <textarea rows="10" cols="40" id="instructions" name="instructions" placeholder="Enter text here" required></textarea>
+          <textarea id="instructions" name="instructions" placeholder="Enter text here" required></textarea>
           <label for="pictures">Pictures of Food:</label>
           <input type="file" id="pictures" name="pictures[]" accept="image/" multiple>
         </fieldset>
